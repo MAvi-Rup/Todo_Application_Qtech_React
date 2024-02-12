@@ -2,13 +2,11 @@ import React from "react";
 
 const Filter = ({ todos, setFilter }) => {
   return (
-    <div className="mt-4 flex justify-between text-xs text-gray-500">
+    <div className="mt-4 flex justify-between text-xs text-gray-500 py-5">
       <p>{todos?.filter((todo) => !todo.completed).length} tasks left</p>
       <ul className="flex space-x-1 items-center text-xs">
-        <li
-          className="cursor-pointer font-bold"
-          onClick={() => setFilter("all")}
-        >
+        <li className=" font-bold">Filters: </li>
+        <li className="cursor-pointer" onClick={() => setFilter("all")}>
           All
         </li>
         <li>|</li>

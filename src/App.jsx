@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import "./App.css";
 import Filter from "./Component/Features/Filter";
 import Header from "./Component/Header";
 import Navbar from "./Component/Navbar";
@@ -19,6 +18,7 @@ function App() {
     setTodos([...todos, newTodo]);
   };
 
+  //Toggle Function
   const toggleCompleted = (id) => {
     setTodos(
       todos.map((todo) =>
@@ -32,11 +32,12 @@ function App() {
       todos.map((todo) => (todo.id === id ? { ...todo, text: newText } : todo))
     );
   };
-
+  //Delete Function
   const deleteTodo = (id) => {
     setTodos(todos.filter((todo) => todo.id !== id));
   };
 
+  //Filter Function
   const filteredTodos = todos.filter((todo) => {
     if (filter === "all") return true;
     if (filter === "completed") return todo.completed;
@@ -47,7 +48,7 @@ function App() {
   return (
     <div className="grid place-items-center bg-slate-300 h-screen px-6 font-sans">
       <Navbar />
-      <Counter todos={filteredTodos} />
+      <Counter todos={todos} />
       <div className=" w-full max-w-2xl rounded-lg bg-slate-200 px-5">
         <Header addTodo={addTodo} />
         <Todolist
