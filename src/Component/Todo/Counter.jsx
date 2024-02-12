@@ -2,7 +2,7 @@ import React from "react";
 
 const Counter = ({ todos }) => {
   return (
-    <div className="grid grid-cols-3 gap-4">
+    <div className="grid grid-cols-3 gap-4 pt-10">
       <div className="bg-gray-200 rounded-md p-4">
         <h2 className="text-lg font-semibold">All Tasks</h2>
         <p className="text-3xl font-bold">{todos?.length}</p>

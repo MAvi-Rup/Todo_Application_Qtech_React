@@ -2,9 +2,14 @@ import { useState } from "react";
 
 const Header = ({ addTodo }) => {
   const [newTodoText, setNewTodoText] = useState("");
+  const [priority, setPriority] = useState("");
 
   const handleChange = (e) => {
     setNewTodoText(e.target.value);
+  };
+
+  const handlePriorityChange = (e) => {
+    setPriority(e.target.value);
   };
 
   const handleSubmit = (e) => {
@@ -14,10 +19,12 @@ const Header = ({ addTodo }) => {
       id: Date.now(),
       text: newTodoText,
       completed: false,
-      priority: "low", // Default priority
+      priority: priority,
     });
     setNewTodoText("");
+    setPriority("");
   };
+
   return (
     <div>
       <form
@@ -31,10 +38,23 @@ const Header = ({ addTodo }) => {
           value={newTodoText}
           onChange={handleChange}
         />
-        <button
-          type="submit"
-          className={`appearance-none w-8 h-8 bg-[url('./images/plus.png')] bg-no-repeat bg-contain`}
-        ></button>
+        <select
+          value={priority}
+          className=" w-1/4 mx-4 text-lg px-5 py-2 border-none outline-none rounded text-black-400"
+          onChange={handlePriorityChange}
+        >
+          <option value="low">Low</option>
+          <option value="medium">Medium</option>
+          <option value="high">High</option>
+        </select>
+        <button type="submit">
+          <img
+            className=" ml-3 h-7 w-7"
+            src="./images/plus.png"
+            alt=""
+            srcSet=""
+          />
+        </button>
       </form>
     </div>
   );

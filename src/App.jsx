@@ -10,11 +10,10 @@ function App() {
   const storedItems = JSON.parse(localStorage.getItem("todos"));
   const [todos, setTodos] = useState(storedItems || []);
   const [filter, setFilter] = useState("all");
-  const localStorageKey = "todos";
 
   useEffect(() => {
-    localStorage.setItem(localStorageKey, JSON.stringify(todos));
-  }, [todos, localStorageKey]);
+    localStorage.setItem("todos", JSON.stringify(todos));
+  }, [todos]);
 
   const addTodo = (newTodo) => {
     setTodos([...todos, newTodo]);
@@ -40,6 +39,8 @@ function App() {
 
   const filteredTodos = todos.filter((todo) => {
     if (filter === "all") return true;
+    if (filter === "completed") return todo.completed;
+    if (filter === "incomplete") return !todo.completed;
     return todo.priority === filter;
   });
 
@@ -55,7 +56,7 @@ function App() {
           editTodo={editTodo}
           deleteTodo={deleteTodo}
         />
-        <Filter todos={filteredTodos} />
+        <Filter todos={filteredTodos} setFilter={setFilter} />
       </div>
     </div>
   );

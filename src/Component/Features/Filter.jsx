@@ -1,18 +1,36 @@
-const Filter = ({ todos }) => {
+import React from "react";
+
+const Filter = ({ todos, setFilter }) => {
   return (
     <div className="mt-4 flex justify-between text-xs text-gray-500">
       <p>{todos?.filter((todo) => !todo.completed).length} tasks left</p>
       <ul className="flex space-x-1 items-center text-xs">
-        <li className="cursor-pointer font-bold">All</li>
+        <li
+          className="cursor-pointer font-bold"
+          onClick={() => setFilter("all")}
+        >
+          All
+        </li>
         <li>|</li>
-        <li className="cursor-pointer">Incomplete</li>
+        <li className="cursor-pointer" onClick={() => setFilter("incomplete")}>
+          Incomplete
+        </li>
         <li>|</li>
-        <li className="cursor-pointer">Complete</li>
-        <li></li>
-        <li></li>
-        <li className="h-3 w-3 border-2 border-green-500 md:hover:bg-green-500 rounded-full cursor-pointer bg-green-500"></li>
-        <li className="h-3 w-3 border-2 border-red-500 md:hover:bg-red-500 rounded-full cursor-pointer"></li>
-        <li className="h-3 w-3 border-2 border-yellow-500 md:hover:bg-yellow-500 rounded-full cursor-pointer"></li>
+        <li className="cursor-pointer" onClick={() => setFilter("completed")}>
+          Completed
+        </li>
+        <li>|</li>
+        <li className="cursor-pointer" onClick={() => setFilter("high")}>
+          High
+        </li>
+        <li>|</li>
+        <li className="cursor-pointer" onClick={() => setFilter("medium")}>
+          Medium
+        </li>
+        <li>|</li>
+        <li className="cursor-pointer" onClick={() => setFilter("low")}>
+          Low
+        </li>
       </ul>
     </div>
   );
