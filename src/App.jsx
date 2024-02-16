@@ -46,18 +46,20 @@ function App() {
   });
 
   return (
-    <div className="grid place-items-center bg-slate-300 font-sans">
+    <div className="bg-slate-300">
       <Navbar />
-      <Counter todos={todos} />
-      <div className=" w-full max-w-2xl rounded-lg bg-slate-200 px-5">
-        <Header addTodo={addTodo} />
-        <Todolist
-          todos={filteredTodos}
-          toggleCompleted={toggleCompleted}
-          editTodo={editTodo}
-          deleteTodo={deleteTodo}
-        />
-        <Filter todos={filteredTodos} setFilter={setFilter} />
+      <div className="grid place-items-center bg-slate-300 h-screen font-sans">
+        <Counter todos={todos} />
+        <div className=" w-full max-w-2xl rounded-lg bg-slate-200 px-5">
+          <Header addTodo={addTodo} />
+          <Todolist
+            todos={filteredTodos}
+            toggleCompleted={toggleCompleted}
+            editTodo={editTodo}
+            deleteTodo={deleteTodo}
+          />
+          <Filter todos={filteredTodos} setFilter={setFilter} />
+        </div>
       </div>
     </div>
   );
